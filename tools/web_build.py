@@ -43,7 +43,7 @@ from typing import Any, Dict, List, Optional
 
 from .android_build import VARIADIC_PROTOTYPE_FILES
 from .embed_assets import hud_assets_build, hud_configure_inputs
-from .linux_build import (EXPAT_DIR, EXPAT_SOURCES, KCP_DIR, MONOCYPHER_DIR, MUSL_MATH_DIR, STB_VORBIS_SOURCE, TOML_DIR,
+from .linux_build import (EXPAT_DIR, EXPAT_SOURCES, KCP_DIR, MONOCYPHER_DIR, MUSL_MATH_DIR, OPENAL_HEADERS_DIR, STB_VORBIS_SOURCE, TOML_DIR,
                           XDK_INCLUDE, ZLIB_DEFINES, ZLIB_DIR, ZLIB_SOURCES, compile_launcher, configuration_defines,
                           game_defines_and_includes, game_sources, musl_math_cflags, musl_math_sources,
                           opus_cflags, opus_sources, updater_defines, xdk_headers)
@@ -258,7 +258,7 @@ def generate_web_build(n: Writer, sln: Any) -> None:
         abi, code, sdl_flag, "-std=gnu11", "-D_GNU_SOURCE", "-DHALO_LINUX_PLATFORM_LAYER", "-w",
         f"-include {prefix_header}", f"-include {platform_semantics_header}",
         f"-I{platform_dir}", f"-I{LINUX_DIR}/include", f"-I{PORT_DIR}/src", f"-I{ANDROID_DIR}/host",
-        f"-I{TOML_DIR}", f"-I{EXPAT_DIR}", f"-I{KCP_DIR}", f"-I{MONOCYPHER_DIR}", f"-I{ZLIB_DIR}",
+        f"-I{TOML_DIR}", f"-I{EXPAT_DIR}", f"-I{KCP_DIR}", f"-I{MONOCYPHER_DIR}", f"-I{ZLIB_DIR}", f"-I{OPENAL_HEADERS_DIR}",
         "-Isource -Isource/cseries", f"-idirafter {XDK_INCLUDE}",
     ])
     # posix_*.c talk to the C library only, with its own ABI (as on Linux)

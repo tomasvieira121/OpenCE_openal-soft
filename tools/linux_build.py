@@ -124,6 +124,8 @@ MUSL_MATH_DIR = Path("port/third_party/musl-math")
 # maps, the menus' and the HUD's PNGs and the updates, data from anywhere,
 # instead of the game's own 1.1.3 (its inflate only, its names prefixed z_)
 ZLIB_DIR = Path("port/third_party/zlib")
+# OpenAL Soft headers (compile-time only; the .so is loaded at run time)
+OPENAL_HEADERS_DIR = Path("port/third_party/openal-soft-headers")
 ZLIB_SOURCES = ("adler32.c", "crc32.c", "inffast.c", "inflate.c", "inftrees.c", "uncompr.c", "zutil.c")
 # (its names prefixed, and the one Z_PREFIX leaves, its error messages, which
 # the game's zlib names the same)
@@ -601,6 +603,7 @@ def generate_linux_build(n: Writer, sln: Any) -> None:
             f"-I{KCP_DIR}",
             f"-I{MONOCYPHER_DIR}",
             f"-I{ZLIB_DIR}",
+            f"-I{OPENAL_HEADERS_DIR}",
             "-Isource -Isource/cseries",
             sdk_flags,
         ])

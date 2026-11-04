@@ -49,6 +49,8 @@ MONOCYPHER_DIR = Path("port/third_party/monocypher")
 # maps, the menus' and the HUD's PNGs and the updates, data from anywhere,
 # instead of the game's own 1.1.3 (its inflate only, its names prefixed z_)
 ZLIB_DIR = Path("port/third_party/zlib")
+# OpenAL Soft headers (compile-time only; the .so is loaded at run time)
+OPENAL_HEADERS_DIR = Path("port/third_party/openal-soft-headers")
 ZLIB_SOURCES = ("adler32.c", "crc32.c", "inffast.c", "inflate.c", "inftrees.c", "uncompr.c", "zutil.c")
 # (its names prefixed, and the one Z_PREFIX leaves, its error messages, which
 # the game's zlib names the same)
@@ -477,7 +479,7 @@ def generate_android_build(n: Writer, sln: Any) -> None:
         f"-include {prefix_header}", f"-include {platform_semantics_header}",
         f"-I{LINUX_DIR}/src", f"-I{LINUX_DIR}/include", f"-I{PORT_DIR}/guest/runtime",
         f"-I{PORT_DIR}/include", f"-I{TOML_DIR}", f"-I{EXPAT_DIR}", f"-I{KCP_DIR}", f"-I{MONOCYPHER_DIR}",
-        f"-I{ZLIB_DIR}", "-Isource -Isource/cseries",
+        f"-I{ZLIB_DIR}", f"-I{OPENAL_HEADERS_DIR}", "-Isource -Isource/cseries",
         f"-I{SDL_DIR}/include", f"-I{gl_include}", *libc_includes, f"-idirafter {XDK_INCLUDE}",
     ])
     guest_host_only = {"memory_watch.c"}  # replaced by guest_memory_watch.c

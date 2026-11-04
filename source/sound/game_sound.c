@@ -479,18 +479,10 @@ long object_impulse_sound_new(
 	short fp_player_index = get_first_person_local_player_for_sound(object_index, definition_index);
 	if (fp_player_index != NONE)
 	{
-		/* Set the relative mode for first-person weapon sounds. */
-		source.spatialization_mode = _sound_spatialization_mode_relative;
-		source.location.position.x = 0.35f;
-		source.location.position.y = -0.15f;
-		source.location.position.z = -0.12f;
-		source.location.forward.i = 1.0f;
-		source.location.forward.j = 0.0f;
-		source.location.forward.k = 0.0f;
-		source.location.translational_velocity.i = 0.0f;
-		source.location.translational_velocity.j = 0.0f;
-		source.location.translational_velocity.k = 0.0f;
-		source.location.game_location.cluster_index = NONE;
+		/* port: first-person weapon firing sounds play unspatialized (2D,
+		equal power in both ears), matching PC Halo CE behaviour; the Xbox
+		had the same effect via DS3DMODE_HEADRELATIVE at the origin. */
+		source.spatialization_mode = _sound_spatialization_mode_none;
 		source.gain = 1.f;
 		source.scale = scale;
 

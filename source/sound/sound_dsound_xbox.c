@@ -2233,8 +2233,8 @@ static boolean dsound_initialize_channel(
 			{
 				mixbins= DSMIXBIN_FRONT_LEFT|DSMIXBIN_FRONT_RIGHT;
 
-				mixbin_volumes[0]= dsound_volume_from_gain(0.5f, 0);
-				mixbin_volumes[1]= dsound_volume_from_gain(0.5f, 0);
+				mixbin_volumes[0]= dsound_volume_from_gain(1.f, 0);
+				mixbin_volumes[1]= dsound_volume_from_gain(1.f, 0);
 			}
 
 			if (mixbins)
